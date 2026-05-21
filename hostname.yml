@@ -1,0 +1,30 @@
+---
+- name: Change hostname on Cisco devices
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+
+    - name: Change hostname for SW1
+      cisco.ios.ios_config:
+        lines:
+          - hostname SW1
+      when: inventory_hostname == "SW1"
+
+    - name: Change hostname for SW2
+      cisco.ios.ios_config:
+        lines:
+          - hostname SW2
+      when: inventory_hostname == "SW2"
+
+    - name: Change hostname for R1
+      cisco.ios.ios_config:
+        lines:
+          - hostname R1
+      when: inventory_hostname == "R1"
+
+    - name: Change hostname for R2
+      cisco.ios.ios_config:
+        lines:
+          - hostname R2
+      when: inventory_hostname == "R2"
